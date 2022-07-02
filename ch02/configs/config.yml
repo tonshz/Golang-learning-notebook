@@ -1,0 +1,49 @@
+Server: # 服务配置
+  RunMode: release # 设置 gin 的运行模式
+  HttpPort: 8000 # 服务端口号
+  ReadTimeout: 60
+  WriteTimeout: 60
+App: # 应用配置
+  DefaultPageSize: 10
+  MaxPageSize: 100
+  LogSavePath: storage/logs # 默认应用日志存储位置
+  LogFileName: app # 默认应用日志名称
+  LogFileExt: .log # 默认应用日志文件后缀名
+  # 添加上传相关配置
+  UploadSavePath: storage/uploads # 上传文件的最终保存目录
+  UploadServerUrl: http://127.0.0.1:8000/static # 上传文件后用于展示的文件服务地址
+  UploadImageMaxSize: 5  # 上传文件所允许的最大空间(MB)
+  UploadImageAllowExts: # 上传文件所允许的文件后缀
+    - .jpg
+    - .jpeg
+    - .png
+  # 设置超时时间
+  DefaultContextTimeout: 10
+Database: # 数据库配置
+  DBType: mysql
+  Username: root  # 数据库账号
+  Password: root  # 数据库密码
+  Host: 127.0.0.1:3306
+  DBName: ch02 # 数据库名称
+  TablePrefix: blog_ # 表名称前缀
+  Charset: utf8
+  ParseTime: True
+  MaxIdleConns: 10
+  MaxOpenConns: 30
+
+# JWT 初始化配置
+JWT:
+  Secret: admin
+  Issuer: blog-service
+  Expire: 7200
+
+# Email 初始化配置
+Email:
+  Host: smtp.163.com
+  Port: 465
+  UserName: dove_zyc@163.com
+  Password: TYTJRVWRXGAHGTBW # 获取的 SMTP 密码
+  IsSSL: true
+  From: dove_zyc@163.com
+  To:
+    - 1103592040@qq.com
